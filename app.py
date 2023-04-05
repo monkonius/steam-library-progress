@@ -9,7 +9,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
 @app.route('/', methods=['GET', 'POST'])
-def login():
+def index():
     if request.method == 'POST':
         steamid = request.form.get('steamid')
         data = api_query(steamid)
