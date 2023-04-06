@@ -9,7 +9,7 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 
-def api_query(steamid):
+def get_library(steamid):
     try:
         steamkey = os.getenv('STEAM_API_KEY')
         url = 'http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/'
