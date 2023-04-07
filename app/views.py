@@ -9,16 +9,18 @@ bp = Blueprint('views', __name__)
 def index():
     if request.method == 'POST':
         steamid = request.form.get('steamid')
-        library = get_library(steamid)['response']['games']
-        player = get_player(steamid)['response']['players'][0]
+        library_raw = get_library(steamid)
+        player_raw = get_player(steamid)
 
-        if library and player:
+        if library_raw and player_raw:
+            library = library_raw['response']['games']
             games = sorted(library,
                             key=lambda value: value['playtime_forever'], reverse=True)
             games_playtime = list(
                 map(lambda x: x['playtime_forever'], games))
             total_playtime = sum(games_playtime)
 
+            player = player_raw['response']['players'][0]
             name = player['personaname']
             avatar = player['avatarfull']
         else:
