@@ -1,16 +1,10 @@
 {% extends 'layout.html' %}
 
+{% block heading %}
+    <h1>Steam Library Progress</h1>
+{% endblock %}
+
 {% block main %}
-
-<h1>Steam Library Progress</h1>
-
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-        {% for message in messages %}
-            <div class="flash">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
 
 {% if steamid %}
     <img src="{{ avatar }}" alt="Player's avatar">
