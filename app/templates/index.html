@@ -1,14 +1,13 @@
 {% extends 'layout.html' %}
 
 {% block heading %}
-    <h1>Steam Library Progress</h1>
+    <h1>{{ name }}'s Progress</h1>
 {% endblock %}
 
 {% block main %}
 
 {% if steamid %}
     <img src="{{ avatar }}" alt="Player's avatar">
-    <h2>{{ name }}'s Progress</h2>
     <ul>
         {% for game in games %}
             <li>{{ game['name'] }}: {{ '%.1f'|format(game['playtime_forever']/60) }} hours</li>
