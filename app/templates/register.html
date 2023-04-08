@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block heading %}
+    <h1>Register</h1>
+{% endblock %}
+
+{% block main %}
+
+<form>
+    <div>
+        <label for="steamid" style="display: none;">Steam ID</label>
+        <input type="text" name="steamid" id="steamid" placeholder="Steam ID">
+        <label for="password" style="display: none;">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password">
+        <label for="confirm" style="display: none;">Confirm Password</label>
+        <input type="password" name="confirm" id="confirm" placeholder="Confirm Password">
+    </div>
+</form>
+
+<a href="{{ url_for('auth.login') }}">Have an account? Log in</a>
+{% endblock %}
