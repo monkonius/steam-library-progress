@@ -1,7 +1,9 @@
 {% extends 'layout.html' %}
 
 {% block heading %}
-    <h1>{{ name }}'s Progress</h1>
+    {% if steamid %}
+        <h1>{{ name }}'s Progress</h1>
+    {% endif %}
 {% endblock %}
 
 {% block main %}
