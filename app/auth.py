@@ -35,23 +35,24 @@ def register():
         steamid = request.form.get('steamid')
         password = request.form.get('password')
         confirm = request.form.get('confirm')
+        player_raw = get_player(steamid)
 
-        if not get_player(steamid):
+        if not player_raw or not player_raw['response']['players']:
             flash('Invalid Steam ID', 'error')
-
-        user = User.query.filter_by(steamid=steamid).first()
-        if user:
-            flash('Steam ID is already in use', 'error')
-        elif password != confirm:
-            flash('Passwords do not match', 'error')
         else:
-            new_user = User(steamid=steamid, password=generate_password_hash(password))
-            db.session.add(new_user)
-            db.session.commit()
+            user = User.query.filter_by(steamid=steamid).first()
+            if user:
+                flash('Steam ID is already in use', 'error')
+            elif password != confirm:
+                flash('Passwords do not match', 'error')
+            else:
+                new_user = User(steamid=steamid, password=generate_password_hash(password))
+                db.session.add(new_user)
+                db.session.commit()
 
-            login_user(new_user, remember=True)
-            flash('Registration successful!')
-            return redirect(url_for('views.index'))
+                login_user(new_user, remember=True)
+                flash('Registration successful!')
+                return redirect(url_for('views.index'))
 
     return render_template('register.html')
 
