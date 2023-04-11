@@ -1,0 +1,17 @@
+{
+  "name": "steam-library-progress",
+  "version": "1.0.0",
+  "description": "Web app that helps track one’s Steam library progress with the [Steam Web API](https://developer.valvesoftware.com/wiki/Steam_Web_API).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tailwindcss -i ./app/static/input.css -o ./app/static/style.css --watch",
+    "build": "tailwindcss -i ./app/static/input.css -o ./app/static/style.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.1"
+  }
+}
