@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    @apply flex items-center justify-between bg-black text-white p-5;
+    @apply bg-black text-white;
 }
 
 main {
@@ -15,7 +15,7 @@ main {
 }
 
 footer {
-    @apply flex items-center justify-between bg-black text-slate-500 p-5 text-sm;
+    @apply bg-black;
 }
 
 a {
@@ -30,16 +30,32 @@ label {
     @apply my-2;
 }
 
-.auth {
-    @apply text-white text-lg font-semibold;
-}
-
 .btn {
     @apply border rounded w-fit px-4 py-2;
 }
 
 .content {
-    @apply mx-auto px-6 md:max-w-4xl;
+    @apply mx-auto p-6 md:max-w-4xl;
+}
+
+.header-items {
+    @apply flex items-center justify-between p-5;
+}
+
+.header-brand {
+    @apply flex items-center gap-2;
+}
+
+.header-auth {
+    @apply text-white text-lg font-semibold;
+}
+
+.footer-items {
+    @apply flex items-center justify-between p-5;
+}
+
+.footer-attribution {
+    @apply text-slate-500 text-sm;
 }
 
 .icon {
