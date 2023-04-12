@@ -1,22 +1,27 @@
 {% extends 'layout.html' %}
 
-{% block heading %}
-    <h1>Register</h1>
-{% endblock %}
-
 {% block main %}
 
-<form action="{{ url_for('auth.register' )}}" method="post">
-    <div>
-        <label for="steamid">Steam ID</label>
-        <input type="text" name="steamid" id="steamid" placeholder="e.g. 76561197960435530 (Robin Walker's ID)">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-        <label for="confirm">Confirm Password</label>
-        <input type="password" name="confirm" id="confirm">
-        <button type="submit">Register</button>
+<div class="py-12">
+    <div class="content border shadow py-6">
+        <h2 class="text-center">Register</h2>
+        <form action="{{ url_for('auth.register' )}}" method="post">
+            <div class="flex flex-col">
+                <label for="steamid">Steam ID</label>
+                <input type="text" name="steamid" id="steamid" class="text-input" placeholder="e.g. 76561197960435530 (Robin Walker's ID)" required>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="text-input" required>
+                <label for="confirm">Confirm Password</label>
+                <input type="password" name="confirm" id="confirm" class="text-input" required>
+                <div class="text-right mt-2">
+                    <a href="{{ url_for('auth.login') }}">Have an account? Log in</a>
+                </div>
+                <div class="text-center mt-6">
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </div>
+        </form>
     </div>
-</form>
+</div>
 
-<a href="{{ url_for('auth.login') }}">Have an account? Log in</a>
 {% endblock %}

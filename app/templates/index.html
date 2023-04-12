@@ -8,16 +8,12 @@
 
 {% block main %}
 
-<img src="{{ avatar }}" alt="Player's avatar">
+<img src="{{ avatar }}" class="w-fit" alt="Player's avatar">
 <ul>
     {% for game in games %}
         <li>{{ game['name'] }}: {{ '%.1f'|format(game['playtime_forever']/60) }} hours</li>
     {% endfor %}
 </ul>
 <div>Total: {{ '%.1f'|format(total_playtime/60) }} hours</div>
-
-<form action="{{ url_for('auth.logout')}}">
-    <button type="submit">Logout</button>
-</form>
 
 {% endblock %}
