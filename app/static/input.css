@@ -30,12 +30,20 @@ label {
     @apply my-2;
 }
 
+.auth {
+    @apply text-white text-lg font-semibold;
+}
+
 .btn {
     @apply border rounded w-fit px-4 py-2;
 }
 
 .content {
     @apply mx-auto px-6 md:max-w-4xl;
+}
+
+.icon {
+    @apply h-6 w-6;
 }
 
 .text-input {

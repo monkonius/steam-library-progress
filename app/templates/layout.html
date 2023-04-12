@@ -15,13 +15,13 @@
 <body>
     <header>
         <div class="flex items-center gap-2">
-            <img src="{{ url_for('static', filename='steam-logo-white.png') }}" alt="Steam Logo" class="h-6 w-6">
+            <img src="{{ url_for('static', filename='steam-logo-white.png') }}" alt="Steam Logo" class="icon">
             <span class="text-lg font-semibold">Steam Library Progress</span>
         </div>
         {% if current_user.is_authenticated %}
-            <a href="{{ url_for('auth.logout') }}" class="text-white text-lg font-semibold">Log Out</a>
+            <a href="{{ url_for('auth.logout') }}" class="auth">Log Out</a>
         {% else %}
-            <a href="{{ url_for('auth.login') }}" class="text-white text-lg font-semibold">Log In</a>
+            <a href="{{ url_for('auth.login') }}" class="auth">Log In</a>
         {% endif %}
     </header>
 
@@ -45,7 +45,7 @@
         </div>
         <div>
             <a href="https://github.com/monkonius" target="_blank" rel="author">
-                <img src="{{ url_for('static', filename='github-mark-white.png' )}}" alt="GitHub Logo" class="h-6 w-6 hover:opacity-50">
+                <img src="{{ url_for('static', filename='github-mark-white.png' )}}" alt="GitHub Logo" class="icon hover:opacity-50">
             </a>
         </div>
     </footer>
