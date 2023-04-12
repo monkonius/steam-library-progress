@@ -29,3 +29,11 @@ label {
 .text-input {
     @apply border rounded px-3 py-2;
 }
+
+.message {
+    @apply bg-slate-200 text-lg font-semibold text-center p-5;
+}
+
+.error {
+    @apply bg-red-200 text-lg font-semibold text-center p-5;
+}
