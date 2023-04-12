@@ -2,12 +2,35 @@
 
 {% block main %}
 
-<img src="{{ avatar }}" class="w-fit" alt="Player's avatar">
-<ul>
-    {% for game in games %}
-        <li>{{ game['name'] }}: {{ '%.1f'|format(game['playtime_forever']/60) }} hours</li>
-    {% endfor %}
-</ul>
-<div>Total: {{ '%.1f'|format(total_playtime/60) }} hours</div>
+<section>
+    <div class="py-12 px-4">
+        <h2 class="text-center">Owned Games</h2>
+        <div class="md:max-w-3xl mx-auto border rounded-md mt-2">
+            <table class="w-full text-lg">
+                <thead class="border-b-2">
+                    <tr>
+                        <th class="p-2 text-left">No.</th>
+                        <th class="p-2 text-left">Game</th>
+                        <th class="p-2 text-right">Hours Played</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for game in games %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ game['name'] }}</td>
+                        <td class="text-right">{{ '%.1f'|format(game['playtime_forever']/60) }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td><strong>Total Hours</strong></td>
+                        <td class="text-right"><strong>{{ '%.1f'|format(total_playtime/60) }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 
 {% endblock %}

@@ -30,6 +30,10 @@ label {
     @apply my-2;
 }
 
+td {
+    @apply py-1 px-2;
+}
+
 .btn {
     @apply border rounded w-fit px-4 py-2;
 }
