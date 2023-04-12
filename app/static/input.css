@@ -2,16 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    @apply flex flex-col min-h-screen;
+}
+
+header {
+    @apply flex items-center justify-between bg-black text-white p-5;
+}
+
+main {
+    @apply flex-1;
+}
+
+footer {
+    @apply bg-black text-slate-500 p-5 text-sm;
+}
+
 a {
     @apply w-fit text-blue-500 hover:text-blue-600 hover:underline;
 }
 
 h1, h2 {
     @apply text-3xl font-bold;
-}
-
-header {
-    @apply bg-black text-white p-5;
 }
 
 label {
