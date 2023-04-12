@@ -15,7 +15,7 @@ main {
 }
 
 footer {
-    @apply bg-black text-slate-500 p-5 text-sm;
+    @apply flex items-center justify-between bg-black text-slate-500 p-5 text-sm;
 }
 
 a {
