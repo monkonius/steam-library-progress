@@ -51,7 +51,7 @@ td {
 }
 
 .header-auth {
-    @apply text-white text-lg font-semibold;
+    @apply text-white font-semibold;
 }
 
 .footer-items {
