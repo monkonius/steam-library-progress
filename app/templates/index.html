@@ -18,7 +18,10 @@
                     {% for game in games %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ game['name'] }}</td>
+                        <td>
+                            <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{ game['appid'] }}/{{ game['img_icon_url'] }}.jpg" alt="{{ game['name'] }} Icon" class="inline">
+                            {{ game['name'] }}
+                        </td>
                         <td class="text-right">{{ '%.1f'|format(game['playtime_forever']/60) }}</td>
                     </tr>
                     {% endfor %}
