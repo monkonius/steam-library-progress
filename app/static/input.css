@@ -30,6 +30,10 @@ label {
     @apply my-2;
 }
 
+table {
+    @apply w-full md:text-lg;
+}
+
 thead {
     @apply bg-gray-50;
 }
@@ -63,7 +67,7 @@ td {
 }
 
 .footer-items {
-    @apply flex items-center justify-between p-5;
+    @apply flex items-center justify-between gap-2 p-5;
 }
 
 .footer-attribution {
@@ -71,7 +75,7 @@ td {
 }
 
 .icon {
-    @apply h-6 w-6;
+    @apply h-6 min-w-[1.5rem];
 }
 
 .text-input {
