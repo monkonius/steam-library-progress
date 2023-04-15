@@ -7,7 +7,7 @@
     <title>Steam Library Progress</title>
     <meta name="description" content="Helps track one's Steam library progress">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon.ico') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
     <header>
         <div class="header-items">
             <div class="header-brand">
-                <img src="{{ url_for('static', filename='steam-logo-white.png') }}" alt="Steam Logo" class="icon">
+                <img src="{{ url_for('static', filename='assets/steam-logo-white.png') }}" alt="Steam Logo" class="icon">
                 <span class="text-lg font-semibold">Steam Library Progress</span>
             </div>
             {% if current_user.is_authenticated %}
@@ -52,7 +52,7 @@
                 <p>Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.</p>
             </div>
             <a href="https://github.com/monkonius" target="_blank" rel="author">
-                <img src="{{ url_for('static', filename='github-mark-white.png' )}}" alt="GitHub Logo" class="icon hover:opacity-50">
+                <img src="{{ url_for('static', filename='assets/github-mark-white.png' )}}" alt="GitHub Logo" class="icon hover:opacity-50">
             </a>
         </div>
     </footer>
