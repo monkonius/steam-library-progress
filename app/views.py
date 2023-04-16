@@ -8,8 +8,13 @@ bp = Blueprint('views', __name__)
 
 
 @bp.route('/')
-@login_required
 def index():
+    return render_template('index.html')
+
+
+@bp.route('/home')
+@login_required
+def home():
     user = User.query.filter_by(id=current_user.id).first()
     steamid = user.steamid
     library_raw = get_library(steamid)
@@ -26,7 +31,7 @@ def index():
     name = player['personaname']
     avatar = player['avatarfull']
 
-    return render_template('index.html',
+    return render_template('home.html',
                             steamid=steamid,
                             games=games,
                             total_playtime=total_playtime,

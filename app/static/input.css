@@ -51,7 +51,7 @@ td {
 }
 
 .btn {
-    @apply border rounded-md w-fit px-4 py-2 text-white bg-blue-600 hover:bg-blue-700;
+    @apply border rounded-md w-fit px-4 py-2 text-white hover:text-white bg-blue-600 hover:bg-blue-700 hover:no-underline;
 }
 
 .content {

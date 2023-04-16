@@ -4,34 +4,18 @@
 
 <section>
     <div class="py-12 px-4">
-        <h2 class="text-center">Owned Games</h2>
-        <div class="md:max-w-3xl mx-auto border rounded-md mt-2">
-            <table>
-                <thead class="border-b-2">
-                    <tr>
-                        <th class="p-2 text-left">No.</th>
-                        <th class="p-2 text-left">Game</th>
-                        <th class="p-2 text-right">Hours Played</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for game in games %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
-                        <td>
-                            <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{ game['appid'] }}/{{ game['img_icon_url'] }}.jpg" alt="{{ game['name'] }} Icon" class="inline">
-                            {{ game['name'] }}
-                        </td>
-                        <td class="text-right">{{ '%.1f'|format(game['playtime_forever']/60) }}</td>
-                    </tr>
-                    {% endfor %}
-                    <tr>
-                        <td></td>
-                        <td><strong>Total Hours</strong></td>
-                        <td class="text-right"><strong>{{ '%.1f'|format(total_playtime/60) }}</strong></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="md:max-w-3xl mx-auto flex gap-8">
+            <div class="flex flex-col">
+                <h1>Keep Track Of Your Library</h1>
+                <div class="w-4/5 mt-4">
+                    <p class="text-lg">Feeling lost with what you've been playing?</p>
+                    <p class="text-lg">Have better insight on the progress of your games on <a href="https://store.steampowered.com/" target="_blank" rel="external">Steam</a>.</p>
+                </div>
+                <a href="{{ url_for('auth.register') }}" class="btn block mt-4">Get Started</a>
+            </div>
+            <div>
+                <img src="{{ url_for('static', filename='assets/computer-display.png') }}" alt="Computer Display" class="w-56">
+            </div>
         </div>
     </div>
 </section>
