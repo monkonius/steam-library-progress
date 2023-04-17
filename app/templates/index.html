@@ -4,17 +4,17 @@
 
 <section>
     <div class="py-12 px-4">
-        <div class="md:max-w-3xl mx-auto flex gap-8">
-            <div class="flex flex-col">
+        <div class="md:max-w-3xl mx-auto flex md:flex-row flex-col gap-8">
+            <div class="flex flex-col md:text-left text-center md:items-start items-center">
                 <h1>Keep Track Of Your Library</h1>
-                <div class="w-4/5 mt-4">
-                    <p class="text-lg">Feeling lost with what you've been playing?</p>
-                    <p class="text-lg">Have better insight on the progress of your games on <a href="https://store.steampowered.com/" target="_blank" rel="external">Steam</a>.</p>
+                <div class="m:w-4/5 mt-4">
+                    <p class="md:text-lg">Feeling lost with what you've been playing?</p>
+                    <p class="md:text-lg">Have better insight on the progress of your games on <a href="https://store.steampowered.com/" target="_blank" rel="external">Steam</a>.</p>
                 </div>
                 <a href="{{ url_for('auth.register') }}" class="btn block mt-4">Get Started</a>
             </div>
             <div>
-                <img src="{{ url_for('static', filename='assets/computer-display.png') }}" alt="Computer Display" class="w-56">
+                <img src="{{ url_for('static', filename='assets/computer-display.png') }}" alt="Computer Display" class="md:w-56 w-32 md:mx-0 mx-auto">
             </div>
         </div>
     </div>
