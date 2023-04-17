@@ -4,7 +4,7 @@
 
 <section>
     <div class="py-12 px-4">
-        <div class="md:max-w-3xl mx-auto flex md:flex-row flex-col gap-8">
+        <div class="md:max-w-3xl mx-auto flex md:flex-row flex-col-reverse md:gap-8 gap-4">
             <div class="flex flex-col md:text-left text-center md:items-start items-center">
                 <h1>Keep Track Of Your Library</h1>
                 <div class="m:w-4/5 mt-4">
@@ -14,7 +14,7 @@
                 <a href="{{ url_for('auth.register') }}" class="btn block mt-4">Get Started</a>
             </div>
             <div>
-                <img src="{{ url_for('static', filename='assets/computer-display.png') }}" alt="Computer Display" class="md:w-56 w-32 md:mx-0 mx-auto">
+                <img src="{{ url_for('static', filename='assets/computer-display.png') }}" alt="Computer Display" class="md:w-56 w-24 md:mx-0 mx-auto">
             </div>
         </div>
     </div>
