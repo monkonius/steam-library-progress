@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, flash, url_for
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from . import db
@@ -11,6 +11,9 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+
     if request.method == 'POST':
         steamid = request.form.get('steamid')
         password = request.form.get('password')
@@ -31,6 +34,9 @@ def login():
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+
     if request.method == 'POST':
         steamid = request.form.get('steamid')
         password = request.form.get('password')
