@@ -11,7 +11,11 @@
                     <p class="md:text-lg">Feeling lost with what you've been playing?</p>
                     <p class="md:text-lg">Have better insight on the progress of your games on <a href="https://store.steampowered.com/" target="_blank" rel="external">Steam</a>.</p>
                 </div>
-                <a href="{{ url_for('auth.register') }}" class="btn block mt-4">Get Started</a>
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('views.home') }}" class="btn block mt-4">Home</a>
+                {% else %}
+                    <a href="{{ url_for('auth.register') }}" class="btn block mt-4">Get Started</a>
+                {% endif %}
             </div>
             <div>
                 <img src="{{ url_for('static', filename='assets/computer-display.png') }}" alt="Computer Display" class="md:w-56 w-24 md:mx-0 mx-auto">

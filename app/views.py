@@ -9,6 +9,15 @@ bp = Blueprint('views', __name__)
 
 @bp.route('/')
 def index():
+    if current_user.is_authenticated:
+        user = User.query.filter_by(id=current_user.id).first()
+        steamid = user.steamid
+        player_raw = get_player(steamid)
+        player = player_raw['response']['players'][0]
+        avatar = player['avatarfull']
+
+        return render_template('index.html', avatar=avatar)
+
     return render_template('index.html')
 
 
