@@ -11,7 +11,7 @@ bp = Blueprint('views', __name__)
 @bp.route('/')
 def index():
     if current_user.is_authenticated:
-        user = User.query.filter_by(id=current_user.id).first()
+        user = db.get_or_404(User, current_user.id)
         steamid = user.steamid
         player_raw = get_player(steamid)
         player = player_raw['response']['players'][0]
@@ -25,8 +25,7 @@ def index():
 @bp.route('/home')
 @login_required
 def home():
-    user = db.session.execute(db.select(User).filter_by(id=current_user.id)).scalar_one()
-    print(user)
+    user = db.get_or_404(User, current_user.id)
     steamid = user.steamid
     library_raw = get_library(steamid)
     player_raw = get_player(steamid)
