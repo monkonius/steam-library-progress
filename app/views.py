@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 
 from .api import get_library, get_player
 from .models import User
+from . import db
 
 bp = Blueprint('views', __name__)
 
@@ -24,7 +25,8 @@ def index():
 @bp.route('/home')
 @login_required
 def home():
-    user = User.query.filter_by(id=current_user.id).first()
+    user = db.session.execute(db.select(User).filter_by(id=current_user.id)).scalar_one()
+    print(user)
     steamid = user.steamid
     library_raw = get_library(steamid)
     player_raw = get_player(steamid)
