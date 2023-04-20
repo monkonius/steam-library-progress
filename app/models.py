@@ -8,6 +8,9 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(100))
     todo = db.relationship('Todo', backref='user', passive_deletes=True)
 
+    def __repr__(self):
+        return f'<User with Steam ID: {self.steamid}>'
+
 
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,3 +18,6 @@ class Todo(db.Model):
     state = db.Column(db.String(8), default='to play')
     player = db.Column(db.Integer, db.ForeignKey(
         'user.id', ondelete='CASCADE'), nullable=False)
+    
+    def __repr__(self):
+        return f'<{self.game}, {self.state} by User {self.player}>'
