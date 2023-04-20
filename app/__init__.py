@@ -19,7 +19,7 @@ def create_app():
     from . import auth
     app.register_blueprint(auth.bp)
 
-    from .models import User
+    from .models import User, Todo
 
     db.init_app(app)
     with app.app_context():
