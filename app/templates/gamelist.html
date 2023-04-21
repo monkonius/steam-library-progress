@@ -10,7 +10,7 @@
             <div class="list-row">
                 <span class="md:text-lg w-1/2">{{ todo_item.game }}</span>
                 <form class="list-form">
-                    <select name="status" id="status" class="p-1 rounded-md">
+                    <select name="state" id="state" class="p-1 rounded-md">
                         {% for state in states %}
                         {% if state == todo_item.state %}
                             <option selected value="{{ todo_item.state }}">{{ todo_item.state }}</option>
