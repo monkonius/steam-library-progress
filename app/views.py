@@ -84,4 +84,6 @@ def gamelist():
                 db.session.delete(todo_item)
                 db.session.commit()
 
-    return render_template('gamelist.html', avatar=avatar)
+    states = ['playing', 'finished', 'on hold', 'dropped', 'to play']
+
+    return render_template('gamelist.html', avatar=avatar, todo=todo, states=states)

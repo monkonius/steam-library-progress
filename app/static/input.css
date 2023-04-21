@@ -82,6 +82,14 @@ td {
     @apply h-6 min-w-[1.5rem];
 }
 
+.list-row {
+    @apply border rounded-md mb-4 p-4 flex justify-between;
+}
+
+.list-edit {
+    @apply text-sm text-blue-500 hover:text-blue-600 hover:underline cursor-pointer;
+}
+
 .text-input {
     @apply border rounded px-3 py-2;
 }
