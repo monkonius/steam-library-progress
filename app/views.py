@@ -77,7 +77,7 @@ def gamelist():
         return redirect(url_for('views.gamelist'))
 
     todo = db.session.execute(db.select(Todo).filter_by(
-        player=current_user.id)).scalars().all()
+        player=current_user.id).order_by(Todo.state)).scalars().all()
     if todo:
         listed_games = list(map(lambda x: x.game, todo))
 
