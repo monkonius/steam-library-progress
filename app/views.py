@@ -5,6 +5,8 @@ from .api import get_library, get_player
 from .models import User, Todo
 from . import db
 
+import json
+
 bp = Blueprint('views', __name__)
 
 
@@ -49,7 +51,7 @@ def home():
                             avatar=avatar)
 
 
-@bp.route('/gamelist')
+@bp.route('/gamelist', methods=['GET', 'POST'])
 @login_required
 def gamelist():
     user = db.get_or_404(User, current_user.id)
@@ -62,6 +64,17 @@ def gamelist():
 
     player = player_raw['response']['players'][0]
     avatar = player['avatarfull']
+
+    states = ['playing', 'finished', 'on hold', 'dropped', 'to play']
+
+    if request.method == 'POST':
+        new_state = request.form.get('state')
+        game_id = request.form.get('id')
+        todo_item = db.get_or_404(Todo, game_id)
+        todo_item.state = new_state
+        db.session.commit()
+
+        return redirect(url_for('views.gamelist'))
 
     todo = db.session.execute(db.select(Todo).filter_by(
         player=current_user.id)).scalars().all()
@@ -83,7 +96,5 @@ def gamelist():
             if todo_item.game not in games:
                 db.session.delete(todo_item)
                 db.session.commit()
-
-    states = ['playing', 'finished', 'on hold', 'dropped', 'to play']
 
     return render_template('gamelist.html', avatar=avatar, todo=todo, states=states)
