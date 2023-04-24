@@ -5,8 +5,6 @@ from .api import get_library, get_player
 from .models import User, Todo
 from . import db
 
-import json
-
 bp = Blueprint('views', __name__)
 
 
