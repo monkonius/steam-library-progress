@@ -12,8 +12,8 @@
                 <form class="list-form" action="{{ url_for('views.gamelist') }}" method="post">
                     <select name="state" class="p-1 rounded-md">
                         {% for state in states %}
-                        {% if state == todo_item.state %}
-                            <option selected value="{{ todo_item.state }}">{{ todo_item.state }}</option>
+                        {% if state == todo_item.state.value %}
+                            <option selected value="{{ todo_item.state.value }}">{{ todo_item.state.value }}</option>
                         {% else %}
                             <option value="{{ state }}">{{ state }}</option>
                         {% endif %}

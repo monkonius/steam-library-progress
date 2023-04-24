@@ -75,7 +75,10 @@ def gamelist():
         return redirect(url_for('views.gamelist'))
 
     todo = db.session.execute(db.select(Todo).filter_by(player=current_user.id).order_by(
-        Todo.state, db.collate(Todo.game, 'NOCASE'))).scalars().all()
+        db.case((Todo.state == 'playing', 1), (Todo.state == 'finished', 2),
+                (Todo.state == 'on hold', 3), (Todo.state == 'dropped', 4),
+                (Todo.state == 'to play', 5)).asc(),
+        db.collate(Todo.game, 'NOCASE'))).scalars().all()
     if todo:
         listed_games = list(map(lambda x: x.game, todo))
 
