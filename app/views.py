@@ -74,8 +74,8 @@ def gamelist():
 
         return redirect(url_for('views.gamelist'))
 
-    todo = db.session.execute(db.select(Todo).filter_by(
-        player=current_user.id).order_by(Todo.state)).scalars().all()
+    todo = db.session.execute(db.select(Todo).filter_by(player=current_user.id).order_by(
+        Todo.state, db.collate(Todo.game, 'NOCASE'))).scalars().all()
     if todo:
         listed_games = list(map(lambda x: x.game, todo))
 
@@ -84,6 +84,8 @@ def gamelist():
             new_game = Todo(game=game, player=current_user.id)
             db.session.add(new_game)
             db.session.commit()
+
+        return redirect(url_for('views.gamelist'))
     elif listed_games != games:
         for game in games:
             if game not in listed_games:
