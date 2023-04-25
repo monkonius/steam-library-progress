@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    @apply bg-black text-white;
+    @apply bg-black text-white sticky top-0;
 }
 
 main {
