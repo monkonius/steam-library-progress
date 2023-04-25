@@ -50,6 +50,14 @@ td {
     @apply py-1 px-3;
 }
 
+#game-list td {
+    @apply md:p-4 p-2;
+}
+
+#game-list .status {
+    @apply p-1;
+}
+
 .btn {
     @apply border rounded-md w-fit px-4 py-2 text-white hover:text-white bg-blue-600 hover:bg-blue-700 hover:no-underline;
 }
@@ -100,4 +108,24 @@ td {
 
 .error {
     @apply bg-red-200 text-lg font-semibold text-center p-5;
+}
+
+.status.playing {
+    @apply bg-green-400;
+}
+
+.status.finished {
+    @apply bg-blue-400;
+}
+
+.status.on.hold {
+    @apply bg-yellow-400;
+}
+
+.status.dropped {
+    @apply bg-red-400;
+}
+
+.status.to.play {
+    @apply bg-gray-400;
 }
