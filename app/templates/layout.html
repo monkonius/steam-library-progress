@@ -33,7 +33,6 @@
             {% endif %}
         </div>
     </header>
-
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
@@ -41,12 +40,10 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-
     <main>
         {% block main %}
         {% endblock %}
     </main>
-
     <footer>
         <div class="footer-items">
             <div class="footer-attribution">

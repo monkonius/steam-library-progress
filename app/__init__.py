@@ -13,6 +13,9 @@ def create_app():
     app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///library.db'
 
+    app.jinja_env.trim_blocks = True
+    app.jinja_env.lstrip_blocks = True
+
     from . import views
     app.register_blueprint(views.bp)
 
