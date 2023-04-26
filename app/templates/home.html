@@ -3,34 +3,18 @@
 {% block main %}
 <section>
     <div class="py-12 px-4">
-        <h2 class="text-center">Owned Games</h2>
-        <div class="md:max-w-3xl mx-auto border rounded-md mt-2">
-            <table>
-                <thead class="border-b-2">
-                    <tr>
-                        <th class="p-2 text-left">No.</th>
-                        <th class="p-2 text-left">Game</th>
-                        <th class="p-2 text-right">Hours Played</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for game in games %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
-                        <td>
-                            <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{ game['appid'] }}/{{ game['img_icon_url'] }}.jpg" alt="{{ game['name'] }} Icon" class="inline">
-                            {{ game['name'] }}
-                        </td>
-                        <td class="text-right">{{ '%.1f'|format(game['playtime_forever']/60) }}</td>
-                    </tr>
-                    {% endfor %}
-                    <tr>
-                        <td></td>
-                        <td><strong>Total Hours</strong></td>
-                        <td class="text-right"><strong>{{ '%.1f'|format(total_playtime/60) }}</strong></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="md:max-w-3xl mx-auto">
+            <h1 class="text-center">Hello, {{ name }}!</h1>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="py-12 px-4">
+        <div class="md:max-w-3xl mx-auto">
+            <div class="flex justify-center">
+                <a href="{{ url_for('views.playtime') }}" class="btn block mt-4">Playtime</a>
+                <a href="{{ url_for('views.gamelist') }}" class="btn block mt-4">Game List</a>
+            </div>
         </div>
     </div>
 </section>

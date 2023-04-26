@@ -27,6 +27,22 @@ def index():
 def home():
     user = db.get_or_404(User, current_user.id)
     steamid = user.steamid
+    player_raw = get_player(steamid)
+
+    player = player_raw['response']['players'][0]
+    name = player['personaname']
+    avatar = player['avatarfull']
+
+    return render_template('home.html',
+                           avatar=avatar,
+                           name=name)
+
+
+@bp.route('/playtime')
+@login_required
+def playtime():
+    user = db.get_or_404(User, current_user.id)
+    steamid = user.steamid
     library_raw = get_library(steamid)
     player_raw = get_player(steamid)
 
@@ -41,7 +57,7 @@ def home():
     name = player['personaname']
     avatar = player['avatarfull']
 
-    return render_template('home.html',
+    return render_template('playtime.html',
                             steamid=steamid,
                             games=games,
                             total_playtime=total_playtime,
