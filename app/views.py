@@ -91,7 +91,6 @@ def playtime():
                             steamid=steamid,
                             games=games,
                             total_playtime=total_playtime,
-                            name=name,
                             avatar=avatar)
 
 
