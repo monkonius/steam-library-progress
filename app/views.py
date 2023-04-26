@@ -27,15 +27,45 @@ def index():
 def home():
     user = db.get_or_404(User, current_user.id)
     steamid = user.steamid
+    library_raw = get_library(steamid)
     player_raw = get_player(steamid)
 
     player = player_raw['response']['players'][0]
     name = player['personaname']
     avatar = player['avatarfull']
 
+    library = library_raw['response']['games']
+    games = sorted(library,
+                   key=lambda value: value['playtime_forever'], reverse=True)
+    games_playtime = list(
+        map(lambda x: x['playtime_forever'], games))
+    total_playtime = sum(games_playtime)
+    top_games = games[0:3]
+
+    todo = db.session.execute(db.select(Todo).filter_by(player=current_user.id)).scalars().all()
+    playing = list(
+        filter(lambda x: x.state.value == 'playing', todo))
+    finished = list(
+        filter(lambda x: x.state.value == 'finished', todo))
+    on_hold = list(
+        filter(lambda x: x.state.value == 'on hold', todo))
+    dropped = list(
+        filter(lambda x: x.state.value == 'dropped', todo))
+    to_play = list(
+        filter(lambda x: x.state.value == 'to play', todo))
+    
+
     return render_template('home.html',
                            avatar=avatar,
-                           name=name)
+                           name=name,
+                           total_playtime=total_playtime,
+                           top_games=top_games,
+                           todo=todo,
+                           playing=playing,
+                           finished=finished,
+                           on_hold=on_hold,
+                           dropped=dropped,
+                           to_play=to_play)
 
 
 @bp.route('/playtime')
