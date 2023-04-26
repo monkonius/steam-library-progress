@@ -15,21 +15,27 @@
 <body>
     <header>
         <div class="header-items">
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('views.home') }}" class="text-white hover:text-white hover:no-underline">
+                <div class="header-brand">
+                    <img src="{{ url_for('static', filename='assets/steam-logo-white.png') }}" alt="Steam Logo" class="icon">
+                    <span class="text-lg font-semibold">Steam Library Progress</span>
+                </div>
+            </a>
+            <a href="{{ url_for('auth.logout') }}" class="header-auth">
+                <div class="flex items-center gap-1 group">
+                    <img src="{{ avatar }}" class="icon inline group-hover:opacity-50" alt="Player's avatar">
+                    <span>Log Out</span>
+                </div>
+            </a>
+            {% else %}
             <a href="{{ url_for('views.index') }}" class="text-white hover:text-white hover:no-underline">
                 <div class="header-brand">
                     <img src="{{ url_for('static', filename='assets/steam-logo-white.png') }}" alt="Steam Logo" class="icon">
                     <span class="text-lg font-semibold">Steam Library Progress</span>
                 </div>
             </a>
-            {% if current_user.is_authenticated %}
-                <a href="{{ url_for('auth.logout') }}" class="header-auth">
-                    <div class="flex items-center gap-1 group">
-                        <img src="{{ avatar }}" class="icon inline group-hover:opacity-50" alt="Player's avatar">
-                        <span>Log Out</span>
-                    </div>
-                </a>
-            {% else %}
-                <a href="{{ url_for('auth.login') }}" class="header-auth">Log In</a>
+            <a href="{{ url_for('auth.login') }}" class="header-auth">Log In</a>
             {% endif %}
         </div>
     </header>
