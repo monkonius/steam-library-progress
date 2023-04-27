@@ -98,6 +98,14 @@ td {
     @apply md:max-w-3xl mx-auto;
 }
 
+.breadcrumb ul {
+    @apply flex flex-wrap list-none font-semibold;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    @apply inline-block mx-1 content-['→'];
+}
+
 .icon {
     @apply h-6 min-w-[1.5rem];
 }

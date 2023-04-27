@@ -1,6 +1,16 @@
 {% extends 'layout.html' %}
 
 {% block main %}
+<nav class="breadcrumb">
+    <div class="pt-4 px-4">
+        <div class="md:max-w-3xl mx-auto">
+            <ul>
+                <li><a href="{{ url_for('views.home' )}}">Home</a></li>
+                <li>Game List</li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <section>
     <div class="section-container">
         <div class="section-wrapper">
