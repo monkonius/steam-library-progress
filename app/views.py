@@ -102,7 +102,7 @@ def gamelist():
     player_raw = get_player(steamid)
 
     games = library_raw['response']['games']
-    games = list(map(lambda x: x['name'], games))
+    game_names = list(map(lambda x: x['name'], games))
 
     player = player_raw['response']['players'][0]
     avatar = player['avatarfull']
@@ -111,8 +111,8 @@ def gamelist():
 
     if request.method == 'POST':
         new_state = request.form.get('state')
-        game_id = request.form.get('id')
-        todo_item = db.get_or_404(Todo, game_id)
+        todo_id = request.form.get('id')
+        todo_item = db.get_or_404(Todo, todo_id)
         todo_item.state = new_state
         db.session.commit()
 
@@ -128,19 +128,19 @@ def gamelist():
 
     if not todo:
         for game in games:
-            new_game = Todo(game=game, player=current_user.id)
+            new_game = Todo(game=game['name'], game_id=game['appid'], player=current_user.id)
             db.session.add(new_game)
             db.session.commit()
 
         return redirect(url_for('views.gamelist'))
-    elif listed_games != games:
+    elif sorted(listed_games) != sorted(game_names):
         for game in games:
-            if game not in listed_games:
-                new_game = Todo(game=game, player=current_user.id)
+            if game['name'] not in listed_games:
+                new_game = Todo(game=game['name'], game_id=game['appid'], player=current_user.id)
                 db.session.add(new_game)
                 db.session.commit()
         for todo_item in todo:
-            if todo_item.game not in games:
+            if todo_item.game not in game_names:
                 db.session.delete(todo_item)
                 db.session.commit()
 
