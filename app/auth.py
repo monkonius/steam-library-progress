@@ -58,7 +58,7 @@ def register():
 
                 login_user(new_user, remember=True)
                 flash('Registration successful!')
-                return redirect(url_for('views.index'))
+                return redirect(url_for('views.home'))
 
     return render_template('register.html')
 
