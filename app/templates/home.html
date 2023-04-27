@@ -25,9 +25,9 @@
                 <span class="mt-2">
                     You have spent a total of <strong>{{ '%.1f'|format(total_playtime/60) }} hours</strong> on this account.
                     Your most played games are <strong>{{ top_games[0].name }}</strong>, <strong>{{ top_games[1].name }}</strong>,
-                    and <strong>{{ top_games[2].name }}</strong>. Check your playtime below!
+                    and <strong>{{ top_games[2].name }}</strong>. Check your play time below!
                 </span>
-                <a href="{{ url_for('views.playtime') }}" class="btn block mt-4">Playtime</a>
+                <a href="{{ url_for('views.playtime') }}" class="btn block mt-4">Play Time</a>
             </div>
         </div>
     </div>
