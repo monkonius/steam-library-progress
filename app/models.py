@@ -24,10 +24,11 @@ class User(db.Model, UserMixin):
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     game = db.Column(db.String(400))
+    game_id = db.Column(db.Integer, nullable=False)
     state = db.Column(db.Enum(StateEnum, values_callable=lambda x: [
                                  str(member.value) for member in x]), default=StateEnum.TO_PLAY)
     player = db.Column(db.Integer, db.ForeignKey(
         'user.id', ondelete='CASCADE'), nullable=False)
     
     def __repr__(self):
-        return f'<{self.game}, {self.state} by User {self.player}>'
+        return f'<{self.game}, {self.state.value} by User {self.player}>'
