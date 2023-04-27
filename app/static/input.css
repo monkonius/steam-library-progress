@@ -94,6 +94,10 @@ td {
     @apply py-12 px-4;
 }
 
+nav + section .section-container {
+    @apply pt-4 pb-12 px-4;
+}
+
 .section-wrapper {
     @apply md:max-w-3xl mx-auto;
 }
