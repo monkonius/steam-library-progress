@@ -2,9 +2,9 @@
 
 {% block main %}
 <section>
-    <div class="py-12 px-4">
-        <div class="md:max-w-3xl mx-auto">
-            <div class="flex flex-col items-center text-center">
+    <div class="section-container">
+        <div class="section-wrapper">
+            <div class="home-content">
                 <h1>Hello, {{ name }}!</h1>
                 <span class="mt-2">
                     You are currently playing <strong>{{ playing|length }}</strong> games.
@@ -18,9 +18,9 @@
     </div>
 </section>
 <section>
-    <div class="py-12 px-4">
-        <div class="md:max-w-3xl mx-auto">
-            <div class="flex flex-col items-center text-center">
+    <div class="section-container">
+        <div class="section-wrapper">
+            <div class="home-content">
                 <h2>Hours On Record</h2>
                 <span class="mt-2">
                     You have spent a total of <strong>{{ '%.1f'|format(total_playtime/60) }} hours</strong> on this account.
