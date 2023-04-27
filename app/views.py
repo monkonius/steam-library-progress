@@ -84,7 +84,6 @@ def playtime():
     total_playtime = sum(games_playtime)
 
     player = player_raw['response']['players'][0]
-    name = player['personaname']
     avatar = player['avatarfull']
 
     return render_template('playtime.html',
