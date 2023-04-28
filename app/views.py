@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, flash, url_for
 from flask_login import login_required, current_user
 
-from .api import get_library, get_player
+from .api import get_library, get_player, get_game
 from .models import User, Todo
 from . import db
 
@@ -145,3 +145,26 @@ def gamelist():
                 db.session.commit()
 
     return render_template('gamelist.html', avatar=avatar, todo=todo, states=states)
+
+
+@bp.route('/game/<int:appid>')
+@login_required
+def game(appid):
+    user = db.get_or_404(User, current_user.id)
+    steamid = user.steamid
+    player_raw = get_player(steamid)
+    game_raw = get_game(appid)
+
+    player = player_raw['response']['players'][0]
+    avatar = player['avatarfull']
+
+    game = game_raw[str(appid)]['data']
+    game_name = game['name']
+    game_header = game['header_image']
+    game_info = game['about_the_game']
+
+    return render_template('game.html',
+                           avatar=avatar,
+                           game_name=game_name,
+                           game_header=game_header,
+                           game_info=game_info)
