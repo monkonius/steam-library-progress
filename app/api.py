@@ -35,3 +35,16 @@ def get_player(steamid):
     
     data = json.loads(response.text)
     return data
+
+
+def get_game(appid):
+    try:
+        url = 'https://store.steampowered.com/api/appdetails'
+        response = requests.get(f'{url}?appids={appid}&l=english')
+        response.raise_for_status()
+    
+    except requests.RequestException:
+        return None
+    
+    data = json.loads(response.text)
+    return data
