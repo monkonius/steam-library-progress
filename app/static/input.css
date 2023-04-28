@@ -134,6 +134,10 @@ nav + section .section-container {
     @apply text-sm text-blue-500 hover:text-blue-600 hover:underline cursor-pointer;
 }
 
+.user-stats {
+    @apply my-2;
+}
+
 .rounded-border {
     @apply border rounded-md;
 }

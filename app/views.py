@@ -152,6 +152,7 @@ def gamelist():
 def game(appid):
     user = db.get_or_404(User, current_user.id)
     steamid = user.steamid
+    library_raw = get_library(steamid)
     player_raw = get_player(steamid)
     game_raw = get_game(appid)
 
@@ -163,8 +164,17 @@ def game(appid):
     game_header = game['header_image']
     game_info = game['about_the_game']
 
+    library = library_raw['response']['games']
+    data = [x for x in library if x['appid'] == appid]
+    playtime = data[0]['playtime_forever'] / 60
+
+    todo_item = db.session.execute(db.select(Todo).filter_by(player=current_user.id, game_id=appid)).scalar_one()
+    state = todo_item.state.value.title()
+
     return render_template('game.html',
                            avatar=avatar,
                            game_name=game_name,
                            game_header=game_header,
-                           game_info=game_info)
+                           game_info=game_info,
+                           playtime=playtime,
+                           state=state)

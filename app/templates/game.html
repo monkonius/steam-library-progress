@@ -16,8 +16,12 @@
     <div class="section-container">
         <div class="section-wrapper">
             <h1>{{ game_name }}</h1>
+            <div class="user-stats">
+                <p>Hours played: <strong>{{ '%.1f'|format(playtime) }}</strong></p>
+                <p>State: <strong>{{ state }}</strong></p>
+            </div>
             <img src="{{ game_header }}" alt="{{ game_name }} header image">
-            <div>{{ game_info|safe }}</div>
+            <div class="mt-4">{{ game_info|safe }}</div>
         </div>
     </div>
 </section>
