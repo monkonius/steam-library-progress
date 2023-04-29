@@ -63,6 +63,33 @@ def register():
     return render_template('register.html')
 
 
+@bp.route('/reset', methods=['GET', 'POST'])
+@login_required
+def reset():
+    user = db.get_or_404(User, current_user.id)
+    player_raw = get_player(user.steamid)
+    player = player_raw['response']['players'][0]
+    avatar = player['avatarfull']
+
+    if request.method == 'POST':
+
+        old_password = request.form.get('old-password')
+        new_password = request.form.get('new-password')
+        confirm = request.form.get('confirm')
+
+        if not check_password_hash(user.password, old_password):
+            flash('Incorrect password', 'error')
+        elif new_password != confirm:
+            flash('Passwords do not match', 'error')
+        else:
+            user.password = generate_password_hash(new_password)
+            db.session.commit()
+            flash('Password reset successful!')
+            return redirect(url_for('views.home'))
+
+    return render_template('reset.html', avatar=avatar)
+
+
 @bp.route('/logout')
 @login_required
 def logout():
