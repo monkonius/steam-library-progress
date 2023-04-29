@@ -78,8 +78,36 @@ td {
     @apply text-white font-semibold;
 }
 
-.auth-link {
+.header-link {
     @apply text-white hover:text-white hover:no-underline;
+}
+
+.dropdown-container {
+    @apply relative;
+}
+
+.dropdown-btn {
+    @apply flex items-center gap-1 cursor-pointer;
+}
+
+.dropdown-img {
+    @apply icon inline group-hover:opacity-50 group-focus:opacity-50;
+}
+
+.dropdown-caret {
+    @apply inline-block text-xs group-hover:opacity-50 group-focus:opacity-50;
+}
+
+.dropdown-content {
+    @apply hidden absolute border rounded-md z-[1] bg-white w-40 right-0;
+}
+
+.dropdown-content a {
+    @apply block p-2 text-black hover:no-underline hover:bg-gray-50 focus:bg-gray-50 w-full;
+}
+
+.show {
+    @apply block;
 }
 
 .footer-items {

@@ -11,25 +11,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="{{ url_for('static', filename='script.js' )}}" defer></script>
 </head>
 <body>
     <header>
         <div class="header-items">
             {% if current_user.is_authenticated %}
-            <a href="{{ url_for('views.home') }}" class="auth-link">
+            <a href="{{ url_for('views.home') }}" class="header-link">
                 <div class="header-brand">
                     <img src="{{ url_for('static', filename='assets/steam-logo-white.png') }}" alt="Steam Logo" class="icon">
                     <span class="text-lg font-semibold">Steam Library Progress</span>
                 </div>
             </a>
-            <a href="{{ url_for('auth.logout') }}" class="header-auth">
-                <div class="flex items-center gap-1 group">
-                    <img src="{{ avatar }}" class="icon inline group-hover:opacity-50" alt="Player's avatar">
-                    <span>Log Out</span>
+            <div class="dropdown-container">
+                <button class="dropdown-btn dropdown group" onclick="showContent(this)">
+                    <img src="{{ avatar }}" class="dropdown-img dropdown" alt="Player's avatar">
+                    <i class="dropdown-caret dropdown">&#9660;</i>
+                </button>
+                <div id="dropdown-content" class="dropdown-content">
+                    <a href="{{ url_for('views.home' )}}">Home</a>
+                    <a href="{{ url_for('views.gamelist' )}}">Game List</a>
+                    <a href="{{ url_for('views.playtime' )}}">Play Time</a>
+                    <a href="{{ url_for('auth.reset' )}}">Reset Password</a>
+                    <a href="{{ url_for('auth.logout' )}}">Log Out</a>
                 </div>
-            </a>
+            </div>
             {% else %}
-            <a href="{{ url_for('views.index') }}" class="auth-link">
+            <a href="{{ url_for('views.index') }}" class="header-link">
                 <div class="header-brand">
                     <img src="{{ url_for('static', filename='assets/steam-logo-white.png') }}" alt="Steam Logo" class="icon">
                     <span class="text-lg font-semibold">Steam Library Progress</span>
