@@ -103,7 +103,11 @@ td {
 }
 
 .dropdown-content a {
-    @apply block p-2 text-black hover:no-underline hover:bg-gray-100 focus:bg-gray-100 w-full;
+    @apply p-2 text-black hover:no-underline hover:bg-gray-100 focus:bg-gray-100 w-full;
+}
+
+.dropdown-link {
+    @apply flex items-center gap-1;
 }
 
 .show {
