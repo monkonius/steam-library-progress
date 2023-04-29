@@ -99,11 +99,11 @@ td {
 }
 
 .dropdown-content {
-    @apply hidden absolute border rounded-md z-[1] bg-white w-40 right-0;
+    @apply hidden absolute border rounded-md z-[1] bg-white w-48 right-0;
 }
 
 .dropdown-content a {
-    @apply block p-2 text-black hover:no-underline hover:bg-gray-50 focus:bg-gray-50 w-full;
+    @apply block p-2 text-black hover:no-underline hover:bg-gray-100 focus:bg-gray-100 w-full;
 }
 
 .show {
