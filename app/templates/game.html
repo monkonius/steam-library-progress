@@ -21,7 +21,12 @@
                 <p>State: <strong>{{ state }}</strong></p>
             </div>
             <img src="{{ game.header_image }}" alt="{{ game.name }} header image">
-            <div class="mt-4">{{ game.about_the_game|safe }}</div>
+            <div class="mt-4">{{ game.short_description }}</div>
+            <div class="mt-4">
+                <p>Developer: {{ game.developers|join(', ') }}</p>
+                <p>Publisher: {{ game.publishers|join(', ') }}</p>
+                <p>Store Page: <a href="https://store.steampowered.com/app/{{ game.steam_appid}}" target="_blank" rel="external">https://store.steampowered.com/app/{{ game.steam_appid }}</a></p>
+            </div>
         </div>
     </div>
 </section>
