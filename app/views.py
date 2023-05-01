@@ -160,9 +160,6 @@ def game(appid):
     avatar = player['avatarfull']
 
     game = game_raw[str(appid)]['data']
-    game_name = game['name']
-    game_header = game['header_image']
-    game_info = game['about_the_game']
 
     library = library_raw['response']['games']
     data = [x for x in library if x['appid'] == appid]
@@ -173,8 +170,6 @@ def game(appid):
 
     return render_template('game.html',
                            avatar=avatar,
-                           game_name=game_name,
-                           game_header=game_header,
-                           game_info=game_info,
+                           game=game,
                            playtime=playtime,
                            state=state)

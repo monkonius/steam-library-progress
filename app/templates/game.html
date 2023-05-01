@@ -7,7 +7,7 @@
             <ul>
                 <li><a href="{{ url_for('views.home' )}}">Home</a></li>
                 <li><a href="{{ url_for('views.gamelist' )}}">Game List</a></li>
-                <li>{{ game_name }}</li>
+                <li>{{ game.name }}</li>
             </ul>
         </div>
     </div>
@@ -15,13 +15,13 @@
 <section>
     <div class="section-container">
         <div class="section-wrapper">
-            <h1>{{ game_name }}</h1>
+            <h1>{{ game.name }}</h1>
             <div class="user-stats">
                 <p>Hours played: <strong>{{ '%.1f'|format(playtime) }}</strong></p>
                 <p>State: <strong>{{ state }}</strong></p>
             </div>
-            <img src="{{ game_header }}" alt="{{ game_name }} header image">
-            <div class="mt-4">{{ game_info|safe }}</div>
+            <img src="{{ game.header_image }}" alt="{{ game.name }} header image">
+            <div class="mt-4">{{ game.about_the_game|safe }}</div>
         </div>
     </div>
 </section>
