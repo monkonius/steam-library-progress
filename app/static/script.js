@@ -1,3 +1,8 @@
+function closeElement(button) {
+    const parent = button.parentElement;
+    parent.remove();
+}
+
 function showContent(button) {
     dropdownContent = button.nextElementSibling;
     dropdownContent.classList.toggle('show');
