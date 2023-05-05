@@ -6,8 +6,10 @@ function showContent(button) {
 window.onclick = (event) => {
     if (!event.target.matches('.dropdown')) {
         const dropdownContent = document.querySelector('.dropdown-content');
-        if (dropdownContent.classList.contains('show')) {
-            dropdownContent.classList.remove('show');
+        if (dropdownContent) {
+            if (dropdownContent.classList.contains('show')) {
+                dropdownContent.classList.remove('show');
+            }
         }
     }
 }
