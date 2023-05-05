@@ -183,11 +183,11 @@ nav + section .section-container {
 }
 
 .message {
-    @apply bg-slate-200 z-[-1] text-lg font-semibold text-center p-5;
+    @apply bg-slate-200 text-lg font-semibold text-center p-5;
 }
 
 .error {
-    @apply bg-red-200 z-[-1] text-lg font-semibold text-center p-5;
+    @apply bg-red-200 text-lg font-semibold text-center p-5;
 }
 
 .status.playing {
