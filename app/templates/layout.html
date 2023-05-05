@@ -92,7 +92,7 @@
             {% for category, message in messages %}
                 <div class="{{ category }}">
                     <span class="float-right w-4" onclick="closeElement(this)">&#x2715;</span>
-                    <p class="translate-x-2">{{ message }}</p>
+                    <span class="relative left-2">{{ message }}</span>
                 </div>
             {% endfor %}
         {% endif %}
