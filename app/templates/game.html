@@ -21,7 +21,7 @@
                 <p>State: <strong>{{ state }}</strong></p>
             </div>
             <img src="{{ game.header_image }}" alt="{{ game.name }} header image">
-            <div class="mt-4">{{ game.short_description }}</div>
+            <div class="mt-4">{{ game.short_description|safe }}</div>
             <div class="mt-4">
                 <p>Developer: {{ game.developers|join(', ') }}</p>
                 <p>Publisher: {{ game.publishers|join(', ') }}</p>
