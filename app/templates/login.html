@@ -2,23 +2,25 @@
 
 {% block main %}
 <section>
-    <div class="section-container">
-        <div class="auth-content border shadow">
-            <h2 class="text-center">Log In</h2>
-            <form action="{{ url_for('auth.login') }}" method="post">
-                <div class="flex flex-col">
-                    <label for="steamid">Steam ID</label>
-                    <input type="text" name="steamid" id="steamid" class="text-input" placeholder="e.g. 76561197960435530 (Robin Walker's ID)" required>
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="text-input" required>
-                    <div class="text-right mt-2">
-                        <a href="{{ url_for('auth.register') }}">Create account</a>
+    <div class="auth-container">
+        <div class="section-wrapper">
+            <div class="auth-content border shadow">
+                <h2 class="text-center">Log In</h2>
+                <form action="{{ url_for('auth.login') }}" method="post">
+                    <div class="flex flex-col">
+                        <label for="steamid">Steam ID</label>
+                        <input type="text" name="steamid" id="steamid" class="text-input" placeholder="e.g. 76561197960435530 (Robin Walker's ID)" required>
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="text-input" required>
+                        <div class="text-right mt-2">
+                            <a href="{{ url_for('auth.register') }}">Create account</a>
+                        </div>
+                        <div class="text-center mt-6">
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
                     </div>
-                    <div class="text-center mt-6">
-                        <button type="submit" class="btn">Submit</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </section>
