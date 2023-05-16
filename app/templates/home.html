@@ -23,7 +23,7 @@
 </section>
 <section>
     <div class="section-container">
-        <div class="section-wrapper">
+        <div class="section-wrapper border-b">
             <div class="home-content">
                 <h2>Hours On Record</h2>
                 <span class="mt-2">
@@ -32,6 +32,21 @@
                     and <strong>{{ top_games[2].name }}</strong>. Check your play time below!
                 </span>
                 <a href="{{ url_for('views.playtime') }}" class="btn block mt-4">Play Time</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="section-container">
+        <div class="section-wrapper">
+            <div class="home-content">
+                <h2>Recently Played Games</h2>
+                <span class="mt-2">You've spent this much time on these games recently:</span>
+                <ul class="mt-2">
+                    {% for game in recent_games %}
+                    <li><strong>{{ game.name }}</strong>: {{ '%.1f'|format(game.playtime_2weeks/60) }} hours</li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, flash, url_for
 from flask_login import login_required, current_user
 
-from .api import get_library, get_player, get_game
+from .api import get_library, get_player, get_game, get_recent_games
 from .models import User, Todo
 from . import db
 
@@ -29,6 +29,7 @@ def home():
     steamid = user.steamid
     library_raw = get_library(steamid)
     player_raw = get_player(steamid)
+    recent_raw = get_recent_games(steamid)
 
     player = player_raw['response']['players'][0]
     name = player['personaname']
@@ -54,6 +55,8 @@ def home():
     to_play = list(
         filter(lambda x: x.state.value == 'to play', todo))
     
+    recent_games = recent_raw['response']['games']
+    
 
     return render_template('home.html',
                            avatar=avatar,
@@ -65,7 +68,8 @@ def home():
                            finished=finished,
                            on_hold=on_hold,
                            dropped=dropped,
-                           to_play=to_play)
+                           to_play=to_play,
+                           recent_games=recent_games)
 
 
 @bp.route('/playtime')
