@@ -24,6 +24,19 @@ def get_library(steamid):
     return data
 
 
+def get_recent_games(steamid):
+    try:
+        url = 'https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/'
+        response = requests.get(f'{url}?key={STEAMKEY}&steamid={steamid}')
+        response.raise_for_status()
+
+    except requests.RequestException:
+        return None
+
+    data = json.loads(response.text)
+    return data
+
+
 def get_player(steamid):
     try:
         url = 'http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/'
