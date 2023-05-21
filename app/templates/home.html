@@ -8,9 +8,9 @@
                 <h1>Hello, {{ name }}!</h1>
                 <span class="mt-2">
                     {% if todo %}
-                    You are currently playing <strong>{{ playing|length }}</strong> games.
-                    You have finished <strong>{{ finished|length }}</strong>, put <strong>{{ on_hold|length }}</strong> on hold,
-                    dropped <strong>{{ dropped|length }}</strong>, and have yet to play <strong>{{ to_play|length }}</strong>,
+                    You are currently playing <strong>{{ todo_dict.playing|length }}</strong> games.
+                    You have finished <strong>{{ todo_dict.finished|length }}</strong>, put <strong>{{ todo_dict.on_hold|length }}</strong> on hold,
+                    dropped <strong>{{ todo_dict.dropped|length }}</strong>, and have yet to play <strong>{{ todo_dict.to_play|length }}</strong>,
                     for a total of <strong>{{ todo|length }}</strong> games. Check your progress below!
                     {% else %}
                     You currently do not have a game list set up. Get started below!

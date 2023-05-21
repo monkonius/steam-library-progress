@@ -44,16 +44,11 @@ def home():
     top_games = games[0:3]
 
     todo = db.session.execute(db.select(Todo).filter_by(player=current_user.id)).scalars().all()
-    playing = list(
-        filter(lambda x: x.state.value == 'playing', todo))
-    finished = list(
-        filter(lambda x: x.state.value == 'finished', todo))
-    on_hold = list(
-        filter(lambda x: x.state.value == 'on hold', todo))
-    dropped = list(
-        filter(lambda x: x.state.value == 'dropped', todo))
-    to_play = list(
-        filter(lambda x: x.state.value == 'to play', todo))
+    todo_dict = dict(playing=list(filter(lambda x: x.state.value == 'playing', todo)),
+                     finished=list(filter(lambda x: x.state.value == 'finished', todo)),
+                     on_hold=list(filter(lambda x: x.state.value == 'on hold', todo)),
+                     dropped=list(filter(lambda x: x.state.value == 'dropped', todo)),
+                     to_play=list(filter(lambda x: x.state.value == 'to play', todo)))
     
     recent_games = recent_raw['response']['games']
     
@@ -64,11 +59,7 @@ def home():
                            total_playtime=total_playtime,
                            top_games=top_games,
                            todo=todo,
-                           playing=playing,
-                           finished=finished,
-                           on_hold=on_hold,
-                           dropped=dropped,
-                           to_play=to_play,
+                           todo_dict=todo_dict,
                            recent_games=recent_games)
 
 
