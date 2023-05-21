@@ -111,6 +111,7 @@ def gamelist():
         todo_item.state = new_state
         db.session.commit()
 
+        flash(f'Updated the status of {todo_item.game}!')
         return redirect(url_for('views.gamelist'))
 
     todo = db.session.execute(db.select(Todo).filter_by(player=current_user.id).order_by(
