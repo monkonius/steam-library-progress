@@ -157,6 +157,9 @@ def game(appid):
 
     game = game_raw[str(appid)]['data']
 
+    referrer = request.referrer
+    previous_route = (referrer.split('/')[-1])
+
     library = library_raw['response']['games']
     data = [x for x in library if x['appid'] == appid]
     playtime = data[0]['playtime_forever'] / 60
@@ -168,4 +171,5 @@ def game(appid):
                            avatar=avatar,
                            game=game,
                            playtime=playtime,
-                           state=state)
+                           state=state,
+                           previous_route=previous_route)

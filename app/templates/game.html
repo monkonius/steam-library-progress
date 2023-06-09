@@ -6,7 +6,11 @@
         <div class="md:max-w-3xl mx-auto">
             <ul>
                 <li><a href="{{ url_for('views.home' )}}">Home</a></li>
-                <li><a href="{{ url_for('views.gamelist' )}}">Game List</a></li>
+                {% if previous_route == 'gamelist' %}
+                    <li><a href="{{ url_for('views.gamelist' )}}">Game List</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('views.playtime' )}}">Play Time</a></li>
+                {% endif %}
                 <li>{{ game.name }}</li>
             </ul>
         </div>
