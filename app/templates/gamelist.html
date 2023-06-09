@@ -28,7 +28,7 @@
                         {% for todo_item in todo %}
                         <tr>
                             <td class="status {{ todo_item.state.value }}"></td>
-                            <td><a href="{{ url_for('views.game', appid= todo_item.game_id) }}" class="text-white hover:text-white">{{ todo_item.game }}</a></td>
+                            <td><a href="{{ url_for('views.game', appid=todo_item.game_id) }}" class="text-white hover:text-white">{{ todo_item.game }}</a></td>
                             <td>
                                 <form class="list-form text-center" action="{{ url_for('views.gamelist') }}" method="post">
                                     <select name="state" class="form-select">
