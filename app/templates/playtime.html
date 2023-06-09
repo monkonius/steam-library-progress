@@ -31,7 +31,9 @@
                             <td>
                                 <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{ game['appid'] }}/{{ game['img_icon_url'] }}.jpg"
                                     alt="{{ game['name'] }} Icon" class="inline">
-                                {{ game['name'] }}
+                                <a href="{{ url_for('views.game', appid=game.appid) }}" class="text-white hover:text-white">
+                                    {{ game['name'] }}
+                                </a>
                             </td>
                             <td class="text-right">{{ '%.1f'|format(game['playtime_forever']/60) }}</td>
                         </tr>
