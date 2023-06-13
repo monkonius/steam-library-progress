@@ -119,17 +119,9 @@ def gamelist():
                 (Todo.state == 'on hold', 3), (Todo.state == 'dropped', 4),
                 (Todo.state == 'to play', 5)).asc(),
         db.collate(Todo.game, 'NOCASE'))).scalars().all()
-    if todo:
-        listed_games = list(map(lambda x: x.game, todo))
-
-    if not todo:
-        for game in games:
-            new_game = Todo(game=game['name'], game_id=game['appid'], player=current_user.id)
-            db.session.add(new_game)
-            db.session.commit()
-
-        return redirect(url_for('views.gamelist'))
-    elif sorted(listed_games) != sorted(game_names):
+    
+    listed_games = list(map(lambda x: x.game, todo))
+    if sorted(listed_games) != sorted(game_names):
         for game in games:
             if game['name'] not in listed_games:
                 new_game = Todo(game=game['name'], game_id=game['appid'], player=current_user.id)

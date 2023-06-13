@@ -3,8 +3,8 @@ from flask_login import login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from . import db
-from .models import User
-from .api import get_player
+from .models import User, Todo
+from .api import get_library, get_player
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -55,6 +55,14 @@ def register():
                 new_user = User(steamid=steamid, password=generate_password_hash(password))
                 db.session.add(new_user)
                 db.session.commit()
+
+                library_raw = get_library(steamid)
+                games = library_raw['response']['games']
+                for game in games:
+                    new_game = Todo(
+                        game=game['name'], game_id=game['appid'], player=new_user.id)
+                    db.session.add(new_game)
+                    db.session.commit()
 
                 login_user(new_user, remember=True)
                 flash('Registration successful!')
