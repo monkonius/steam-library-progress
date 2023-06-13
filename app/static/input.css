@@ -127,7 +127,7 @@ td {
 }
 
 .section-container {
-    @apply md:max-w-3xl mx-auto;
+    @apply md:max-w-3xl md:mx-auto mx-4;
 }
 
 nav + section .section-wrapper {
