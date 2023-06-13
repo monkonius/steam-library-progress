@@ -39,6 +39,7 @@ def register():
 
     if request.method == 'POST':
         steamid = request.form.get('steamid')
+        email = request.form.get('email')
         password = request.form.get('password')
         confirm = request.form.get('confirm')
         player_raw = get_player(steamid)
@@ -48,11 +49,14 @@ def register():
         else:
             user = User.query.filter_by(steamid=steamid).first()
             if user:
-                flash('Steam ID is already in use', 'error')
+                flash('Steam ID or email already in use', 'error')
             elif password != confirm:
                 flash('Passwords do not match', 'error')
             else:
-                new_user = User(steamid=steamid, password=generate_password_hash(password))
+                new_user = User(
+                    steamid=steamid,
+                    email=email,
+                    password=generate_password_hash(password))
                 db.session.add(new_user)
                 db.session.commit()
 
@@ -60,7 +64,9 @@ def register():
                 games = library_raw['response']['games']
                 for game in games:
                     new_game = Todo(
-                        game=game['name'], game_id=game['appid'], player=new_user.id)
+                        game=game['name'],
+                        game_id=game['appid'],
+                        player=new_user.id)
                     db.session.add(new_game)
                     db.session.commit()
 

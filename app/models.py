@@ -13,12 +13,13 @@ class StateEnum(enum.Enum):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(255), unique=True)
     steamid = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     todo = db.relationship('Todo', backref='user', passive_deletes=True)
 
     def __repr__(self):
-        return f'<User with Steam ID: {self.steamid}>'
+        return f'<User {self.id} with Steam ID: {self.steamid} and email: {self.email}>'
 
 
 class Todo(db.Model):
