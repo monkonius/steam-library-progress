@@ -15,10 +15,10 @@ def login():
         return redirect(url_for('views.home'))
 
     if request.method == 'POST':
-        steamid = request.form.get('steamid')
+        email = request.form.get('email')
         password = request.form.get('password')
 
-        user = User.query.filter_by(steamid=steamid).first()
+        user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
                 flash('Logged in!')
