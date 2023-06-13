@@ -58,7 +58,6 @@ def home():
                            name=name,
                            total_playtime=total_playtime,
                            top_games=top_games,
-                           todo=todo,
                            todo_dict=todo_dict,
                            recent_games=recent_games)
 
