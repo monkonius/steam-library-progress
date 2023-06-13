@@ -3,21 +3,23 @@
 {% block main %}
 <section>
     <div class="section-container">
-        <div class="auth-content border shadow">
-            <h2 class="text-center">Reset Password</h2>
-            <form action="{{ url_for('auth.reset' )}}" method="post">
-                <div class="flex flex-col">
-                    <label for="steamid">Old Password</label>
-                    <input type="password" name="old-password" id="password" class="text-input" required>
-                    <label for="password">New Password</label>
-                    <input type="password" name="new-password" id="password" class="text-input" required>
-                    <label for="confirm">Confirm Password</label>
-                    <input type="password" name="confirm" id="confirm" class="text-input" required>
-                    <div class="text-center mt-6">
-                        <button type="submit" class="btn">Submit</button>
+        <div class="section-wrapper">
+            <div class="auth-content border border-slate-700 shadow">
+                <h2 class="text-center">Reset Password</h2>
+                <form action="{{ url_for('auth.reset' )}}" method="post">
+                    <div class="flex flex-col">
+                        <label for="steamid">Old Password</label>
+                        <input type="password" name="old-password" id="password" class="text-input" required>
+                        <label for="password">New Password</label>
+                        <input type="password" name="new-password" id="password" class="text-input" required>
+                        <label for="confirm">Confirm Password</label>
+                        <input type="password" name="confirm" id="confirm" class="text-input" required>
+                        <div class="text-center mt-6">
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </section>
