@@ -12,6 +12,9 @@
                 <p>Steam name: <strong>{{ player.personaname }}</strong></p>
                 <p>Steam profile: <a href="{{ player.profileurl }}" target="_blank" rel="external">{{ player.profileurl }}</a></p>
             </div>
+            <div>
+                <a href="{{ url_for('auth.reset') }}" class="btn block mt-4">Reset Password</a>
+            </div>
         </div>
     </div>
 </section>
