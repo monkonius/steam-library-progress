@@ -166,7 +166,10 @@ def game(appid):
     game = game_raw[str(appid)]['data']
 
     referrer = request.referrer
-    previous_route = (referrer.split('/')[-1])
+    if referrer:
+        previous_route = (referrer.split('/')[-1])
+    else:
+        previous_route = 'gamelist'
 
     library = library_raw['response']['games']
     data = [x for x in library if x['appid'] == appid]
