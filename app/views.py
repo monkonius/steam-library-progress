@@ -63,6 +63,22 @@ def home():
                            recent_games=recent_games)
 
 
+
+@bp.route('/profile')
+@login_required
+def profile():
+    user = db.get_or_404(User, current_user.id)
+    player_raw = get_player(user.steamid)
+
+    player = player_raw['response']['players'][0]
+    avatar = player['avatarfull']
+
+    return render_template('profile.html',
+                           user=user,
+                           player=player,
+                           avatar=avatar)
+
+
 @bp.route('/playtime')
 @login_required
 def playtime():

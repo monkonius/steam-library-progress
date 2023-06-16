@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<section>
+    <div class="section-container">
+        <div class="section-wrapper">
+            <h1>Profile</h1>
+            <img src="{{ avatar }}" class="user-stats" alt="Player's avatar">
+            <div class="user-stats">
+                <p>Email: <strong>{{ user.email }}</strong></p>
+                <p>Steam ID: <strong>{{ user.steamid }}</strong></p>
+                <p>Steam name: <strong>{{ player.personaname }}</strong></p>
+                <p>Steam profile: <a href="{{ player.profileurl }}" target="_blank" rel="external">{{ player.profileurl }}</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
